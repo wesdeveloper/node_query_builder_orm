@@ -6,7 +6,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./bin",
     "dev": "cross-env NODE_ENV=development nodemon bin",
+    "migration:make": "./node_modules/.bin/knex migrate:make",
     "migration:run": "./node_modules/.bin/knex migrate:latest",
+    "seed:make": "./node_modules/.bin/knex seed:make",
     "seed:run": "./node_modules/.bin/knex seed:run",
     "db:dev": "./dbs/development/script_db.sh",
     "env:dev": "npm run db:dev && cross-env NODE_ENV=development npm run migration:run && cross-env NODE_ENV=development npm run seed:run",
@@ -36,7 +38,8 @@
     "joi": "^14.3.1",
     "knex": "^0.17.5",
     "morgan": "^1.9.1",
-    "pg": "^7.11.0"
+    "pg": "^7.11.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
