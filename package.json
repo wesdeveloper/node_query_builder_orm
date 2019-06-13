@@ -4,9 +4,12 @@
   "description": "Project to show how to use an query builder or orm with node.",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin",
-    "dev": "./node_modules/.bin/nodemon ./bin",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development node ./bin",
+    "dev": "cross-env NODE_ENV=development nodemon bin",
+    "migration:run": "./node_modules/.bin/knex migrate:latest",
+    "seed:run": "./node_modules/.bin/knex seed:run",
+    "db:dev": "./dbs/development/script_db.sh",
+    "env:dev": "npm run db:dev && cross-env NODE_ENV=development npm run migration:run && cross-env NODE_ENV=development npm run seed:run",    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -27,7 +30,9 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "ip": "^1.1.5",
-    "morgan": "^1.9.1"
+    "knex": "^0.17.5",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
