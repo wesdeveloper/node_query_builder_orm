@@ -4,6 +4,7 @@ const database = require("knex")({
   client: "pg",
   connection: {
     host: DB_HOST,
+    port: DB_PORT,
     user: DB_USER,
     password: DB_PASS,
     database: DB_NAME
