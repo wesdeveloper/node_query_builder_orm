@@ -1,4 +1,6 @@
 const { database } = require("../../configs");
+
+// eslint-disable-next-line import/order
 const bookshelf = require("bookshelf")(database);
 
 const User = bookshelf.Model.extend({
