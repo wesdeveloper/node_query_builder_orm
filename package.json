@@ -1,0 +1,35 @@
+{
+  "name": "node_query_builder_orm",
+  "version": "1.0.0",
+  "description": "Project to show how to use an query builder or orm with node.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin",
+    "dev": "./node_modules/.bin/nodemon ./bin",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesdeveloper/node_query_builder_orm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesdeveloper/node_query_builder_orm/issues"
+  },
+  "homepage": "https://github.com/wesdeveloper/node_query_builder_orm#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.3.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "ip": "^1.1.5",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
