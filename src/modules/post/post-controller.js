@@ -1,8 +1,10 @@
-const userService = require("./user-services");
+const postService = require("./post-services");
 const { logger } = require("../../configs");
 
+const NOT_FOUND_MESSAGE = "Not found!";
+
 /**
- *  Create an user.
+ *  Create an post.
  *
  * @param {object} req - Object request.
  * @param {object} res - Object response.
@@ -10,18 +12,18 @@ const { logger } = require("../../configs");
 const create = async (req, res) => {
   const { body } = req.payload;
   try {
-    logger.trace(`userController.create: ${body.name} - ${body.cpf}`);
+    logger.trace(`postController.create: ${body.title}`);
 
-    const user = await userService.create(body);
-    if (!user) {
-      throw error("Failed to create user");
+    const post = await postService.create(body);
+    if (!post) {
+      throw error("Failed to create post");
     }
     return res.parseReturn({
       status: 201,
-      data: user
+      data: post
     });
   } catch (e) {
-    logger.error(`userController.create: ${body.name} - ${body.cpf}`, e);
+    logger.error(`postController.create: ${body.name}`, e);
     return res.parseReturn({
       status: 500
     });
@@ -29,7 +31,7 @@ const create = async (req, res) => {
 };
 
 /**
- *  Get an user by id.
+ *  Get an post by id.
  *
  * @param {object} req - Object request.
  * @param {object} res - Object response.
@@ -37,20 +39,20 @@ const create = async (req, res) => {
 const getById = async (req, res) => {
   const { id } = req.payload.params;
   try {
-    logger.trace(`userController.getById: ${id}`);
-    const user = await userService.getById(id);
-    if (!user) {
+    logger.trace(`postController.getById: ${id}`);
+    const post = await postService.getById(id);
+    if (!post) {
       return res.parseReturn({
         status: 404,
-        data: [{ message: "user not found" }]
+        data: [{ message: NOT_FOUND_MESSAGE }]
       });
     }
     return res.parseReturn({
       status: 200,
-      data: user
+      data: post
     });
   } catch (e) {
-    logger.error(`userController.getById: ${id}`, e);
+    logger.error(`postController.getById: ${id}`, e);
     return res.parseReturn({
       status: 500
     });
@@ -58,7 +60,7 @@ const getById = async (req, res) => {
 };
 
 /**
- *  Get an page of users.
+ *  Get an page of posts.
  *
  * @param {object} req - Object request.
  * @param {object} res - Object response.
@@ -66,17 +68,17 @@ const getById = async (req, res) => {
 const getPaginated = async (req, res) => {
   const { page, quantity } = req.query || {};
   try {
-    logger.trace(`userController.getPaginated`);
-    const users = await userService.getPaginated(page, quantity);
-    if (!users) {
-      throw error("Failed to get users");
+    logger.trace(`postController.getPaginated`);
+    const posts = await postService.getPaginated(page, quantity);
+    if (!posts) {
+      throw error("Failed to get posts");
     }
     return res.parseReturn({
       status: 200,
-      data: users
+      data: posts
     });
   } catch (e) {
-    logger.error(`userController.getPaginated`, e);
+    logger.error(`postController.getPaginated`, e);
     return res.parseReturn({
       status: 500
     });
@@ -84,7 +86,7 @@ const getPaginated = async (req, res) => {
 };
 
 /**
- *  Delete an user by id.
+ *  Delete an post by id.
  *
  * @param {object} req - Object request.
  * @param {object} res - Object response.
@@ -92,22 +94,22 @@ const getPaginated = async (req, res) => {
 const deleteById = async (req, res) => {
   const { id } = req.payload.body;
   try {
-    logger.trace(`userController.deleteById: ${id}`);
+    logger.trace(`postController.deleteById: ${id}`);
 
-    const user = await userService.getById(id);
-    if (!user) {
+    const post = await postService.getById(id);
+    if (!post) {
       return res.parseReturn({
         status: 404,
-        data: [{ message: "user not found" }]
+        data: [{ message: NOT_FOUND_MESSAGE }]
       });
     }
 
-    await userService.deleteById(id);
+    await postService.deleteById(id);
     return res.parseReturn({
       status: 200
     });
   } catch (e) {
-    logger.error(`userController.deleteById: ${id}`, e);
+    logger.error(`postController.deleteById: ${id}`, e);
     return res.parseReturn({
       status: 500
     });

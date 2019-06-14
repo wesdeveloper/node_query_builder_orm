@@ -10,6 +10,7 @@ const { logger, database } = require("./configs");
 const { responseMiddleware } = require("./middlewares");
 
 const userRoutes = require("./modules/user/user-routes");
+const postRoutes = require("./modules/post/post-routes");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.get("/api", (req, res) =>
 );
 
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 // catch 404
 app.use((req, res) =>

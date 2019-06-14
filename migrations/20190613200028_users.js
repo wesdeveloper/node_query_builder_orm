@@ -20,4 +20,4 @@ exports.up = knex =>
       .notNullable();
   });
 
-exports.down = knex => knex.schema.dropTable("users");
+exports.down = knex => knex.schema.dropTable("users").dropTable("posts");

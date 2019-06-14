@@ -35,7 +35,7 @@ exports.seed = knex =>
           phone: "63998132500"
         },
         {
-          id: uuid(),
+          id: "ab79a07d-cd8c-43db-9ff4-aebdb6b52c97",
           name: "Valentina Fátima Maya Pereira",
           cpf: "40253514630",
           password: "TIU2RwfWM2",
@@ -45,7 +45,7 @@ exports.seed = knex =>
           phone: "63985619059"
         },
         {
-          id: uuid(),
+          id: "9087fb5c-cf35-47dd-9e3e-12cfc3d9a661",
           name: "Maria Allana Vieira",
           cpf: "03464370321",
           password: "WU9yAeMsjj",

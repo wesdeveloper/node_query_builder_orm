@@ -51,4 +51,10 @@ const getPaginated = async (page = 1, pageSize = 10) =>
  */
 const deleteById = async id => User.forge({ id }).destroy();
 
-module.exports = { create, getById, getPaginated, deleteById };
+module.exports = {
+  create,
+  getById,
+  getPaginated,
+  deleteById,
+  UserModel: Bookshelf.model("User", User)
+};
