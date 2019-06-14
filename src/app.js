@@ -9,6 +9,8 @@ const bodyParser = require("body-parser");
 const { logger, database } = require("./configs");
 const { responseMiddleware } = require("./middlewares");
 
+const userRoutes = require("./modules/user/user-routes");
+
 const app = express();
 
 app.use(morgan("dev"));
@@ -24,6 +26,8 @@ app.get("/api", (req, res) =>
     data: { message: "Welcome to node_query_builder_orm" }
   })
 );
+
+app.use("/api/users", userRoutes);
 
 // catch 404
 app.use((req, res) =>

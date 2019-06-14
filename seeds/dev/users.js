@@ -54,7 +54,7 @@ exports.seed = knex =>
           phone: "95988195436"
         },
         {
-          id: uuid(),
+          id: "b8d48193-4084-400d-87fd-5559c12be626",
           name: "Calebe Severino da Mata",
           cpf: "36856399006",
           password: "P01nxwpGBq",
